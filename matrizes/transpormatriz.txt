@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int transporMatriz(int m, int n, int A[m][n], int B[n][m]){
+  int i, j;
+  for (i=0; i<m; i++){
+    for (j=0; j<n; j++){
+      B[j][i] = A[i][j];
+    }
+  }
+}
+
+void preencherALeatorio(int m, int n, int matriz[m][n]){
+
+  srand(time(NULL));
+  int i, j;
+  for (i=0; i<m; i++){
+    for(j=0; j<n; j++){
+      matriz[i][j] = rand()%100;
+    }
+  }
+}
+
+void exibirMatriz(int m, int n, int B[n][m]){
+  int i, j;
+  for (i=0; i<n; i++){
+    for(j=0; j<m; j++){
+      printf("%3d ", B[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+void main(void) {
+
+  int matriz1[10][5], matriz2[10][5];
+  
+
+}

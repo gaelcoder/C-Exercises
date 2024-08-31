@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+void preencherMatrizAleatorio(int m, int n, int matriz[m][n]) {
+  // declaração de variáveis
+  int i, j;
+
+  srand(time(NULL));
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      matriz[i][j] = rand() % 10;
+    }
+  }
+}
+
+void exibirMatriz(int m, int n, int matriz[m][n]) {
+  // declaração de variáveis
+  int i, j;
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      printf("%3d ", matriz[i][j]);
+    }
+
+    printf("\n");
+  }
+}
+
+void somaLinha(int l1, int l2, int l3, int *matriz[10][5]){
+    int i, aux[5];
+    for(i = 0; i < 5; i++){
+      aux[i] = *matriz[l1][i] + *matriz[l2][i];
+    }
+    for(i = 0; i < 5; i++){
+      *matriz[l3][i] = aux[i];
+    }
+  }
+
+void main() {
+  int *quadro[10][5], pavuna, botafogo, barra;
+  preencherMatrizAleatorio(10, 5, *quadro);
+  exibirMatriz(10, 5, *quadro);
+  printf("Escolha a 1a linha: ");
+  scanf("%d", &pavuna);
+  printf("Escolha a 2a linha: ");
+  scanf("%d", &botafogo);
+  printf("Escolha a 3a linha: ");
+  scanf("%d", &barra);
+  printf("\n"); 
+  somaLinha(pavuna, botafogo, barra, *quadro);
+  exibirMatriz(10, 5, *quadro);
+  
+  
+}

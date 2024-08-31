@@ -1,0 +1,38 @@
+/* FAETERJ-Rio
+   Fundamentos de Programação - FPR - Manhã
+   Professor Leonardo Vianna
+   Aula de 02/05/2024
+   
+   Lista de Exercícios VIII (Recursividade)
+   
+   Questão 03: 
+   Desenvolver uma função recursiva que exiba todos os múltiplos 
+   do número N, inferiores ou iguais ao valor V.
+*/
+
+//importação de bibliotecas
+#include <stdio.h>
+
+//Protótipos das funções
+void exibirMultiplos (int N, int V);
+
+//main
+void main ()
+{
+	exibirMultiplos (5, 30);
+}
+
+//implementação das funções
+void exibirMultiplos (int N, int V)
+{
+	if (V >= 0)	//caso geral
+	{
+		exibirMultiplos (N, V-1);
+		
+		if (V%N == 0)
+		{
+			printf ("%d ", V);
+		}
+	}
+	//caso base implícito: V < 0
+}

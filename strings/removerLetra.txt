@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int removerCaracteres(char s[], char letra){
+  int i, j, cont;
+
+  //percorrendo string
+  for (i=0; s[i]; i++){
+  
+  //comparando letra com a string  
+    if (s[i] == letra){
+
+    //substituição da letra pela letra seguinte
+      
+      for (j=i; s[j]; j++){
+
+      s[j] = s[j+1];
+        
+      }
+      
+      cont++;
+
+      //i-- para voltar a posição e reanalisar a string
+      i--;
+    }
+  }
+
+  return cont;
+}
+
+int main(void) {
+
+}

@@ -1,0 +1,47 @@
+//importação de bibliotecas
+#include <stdio.h>
+
+//Protótipos das funções
+void conversao (int n, int base);
+
+//main
+void main ()
+{
+	conversao (28, 16);
+}
+
+//implementação das funções
+void conversao (int n, int base)
+{
+	int digito;
+	
+	if (n == 0)
+	{
+		printf ("0");
+	}
+	else
+	{
+		if (n > 0)
+		{
+			conversao (n/base, base);
+			
+			digito = n%base;
+			
+			if (digito < 10)
+			{
+				printf ("%d", digito);
+			}
+			else
+			{
+				printf ("%c", 'A'+(digito-10));
+			}
+		}
+	}
+	/*else
+	{
+		if (n >= 0);
+		{
+			printf ("%d", n);
+		}
+	}*/
+}

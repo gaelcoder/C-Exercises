@@ -1,0 +1,129 @@
+#include <stdio.h>
+
+//receber matriz e fazer calculo dos valores a partir da linha 1 e coluna 1
+
+int totalizadorinator(int x, int y, int matriz[x][y]){
+  int total = 0;
+  for(y=1; y<11; y++){
+    for(x=1; x<13; x++){
+      total += matriz[x][y];
+    }
+  }
+  return total;
+}
+
+//recebe e calcula o mês que mais teve maior valor de vendas
+
+int maiorvendas(int x, int y, int matriz[x][y]){
+  int maior = 0, mes, i, j, total;
+  total = totalmesa(x, y, matriz);
+      if (total > maior){
+        maior = total;
+        mes = i;
+      }
+  return mes;
+}
+
+//recebe e calcula o funcionário que menos vendeu no ano;
+int menosvendas(int x, int y, int matriz[x][y]){
+  int menor = 1000000, funcionario, i, j, total = 0;
+  for(i = 1; i < 11; i++){
+    total = 0;
+    for(j = 1; j < 13; j++)
+      total += matriz[j][i];
+    if(total < menor){
+      menor = total;
+      funcionario = i;
+    }
+  }
+  return funcionario;
+}
+
+//recebe e calcula o total vendido por todos os funcionários em um determinado mês
+
+int totalmesa(int x, int y, int matriz[x][y]){
+  int total = 0;
+  for (y = 1; y < 11; y++){
+    total += matriz[x][y];
+  }
+  return total;
+}
+
+void preencherMatrizAleatorio (int m, int n, int matriz[m][n])
+{
+  //declaração de variáveis
+  int i, j;
+
+  srand (time(NULL));
+
+  //percorrendo as linhas da matriz
+  for (i=0;i<m;i++)
+  {
+    //percorrendo as colunas da matriz
+    for (j=0;j<n;j++)
+    {
+      matriz[i][j] = rand()%100;
+    }	
+  }	
+}
+
+void exibirMatriz (int m, int n, int matriz[m][n])
+{
+  //declaração de variáveis
+  int i, j;
+
+  //percorrendo as linhas da matriz
+  for (i=0;i<m;i++)
+  {
+    //percorrendo as colunas da matriz
+    for (j=0;j<n;j++)
+    {
+      printf ("%3d ", matriz[i][j]);
+    }	
+
+    printf ("\n");
+  }
+}
+
+//recebe e calcula o total vendido por determinado funcionário no ano
+
+int totalfuncionario(int x, int y, int matriz[x][y]){
+  int total = 0;
+  for (x = 1; x < 13; x++){
+    total += matriz[x][y];
+  }
+  return total;
+}
+
+//principal
+
+int main(void) {
+  //declaração de variáveis e tamanho da matriz;
+  int calendario[13][11], total, i, j, mesa, totalmes, totalfunc, func, maiormes, menorfunc;
+
+  //inserção de valores na matriz;
+  preencherMatrizAleatorio (13, 11, calendario);
+  printf("\n");
+  exibirMatriz (13, 11, calendario);
+  printf("\n");
+  printf("\nFuncionário escolhido pra consulta: ");
+  scanf("%d", &func);
+  totalfunc = totalfuncionario(13, func, calendario);
+  printf("TOTAL DE VENDAS NO ANO | FUNCIONÁRIO %d | R$%d\n", func, totalfunc);
+
+  printf("\nMês escolhido pra consulta: ");
+  scanf("%d", &mesa);
+  totalmes = totalmesa(mesa, 11, calendario);
+  printf("TOTAL DE VENDAS | MÊS %d | R$%d\n", mesa, totalmes);
+  
+  total = totalizadorinator(13, 11, calendario);
+  printf("\nO valor total de vendas no ano foi de R$%d\n", total);
+
+  maiormes = maiorvendas(13, 11, calendario);
+  printf("\nMÊS COM MAIS VENDAS | MÊS %d \n", maiormes);
+
+  menorfunc = menosvendas(13, 11, calendario);
+  printf("\nFUNCIONÁRIO COM MENOR VALOR DE VENDAS | FUNCIONÁRIO %d \n", menorfunc);
+
+ 
+}

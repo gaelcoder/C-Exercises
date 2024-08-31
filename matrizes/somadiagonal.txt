@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+//função que verifica se a soma dos elementos da matriz acima ou abaixo da diagonal principal são iguais a soma dos elementos da diagonal principal
+int somadiagonal(int x, int matriz[x][x]){
+  int i, j, soma = 0, somacima = 0, somabaixo = 0;
+  for(i = 0; i < x; i++){
+    for(j = 0; j < x; j++){
+      if(j == i){
+        soma += matriz[i][j];
+      }
+      if (j > i){
+        somacima += matriz[i][j];
+      }
+      if (j < i){
+        somabaixo += matriz[i][j];
+      }
+    }
+  }
+  if(somacima == soma && somabaixo == soma){
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+//principal
+int main(void) {
+  //declaração de variáveis
+  int n, valor, i, j, ret;
+  printf("Digite o n° de linhas e colunas da matriz: ");
+  scanf("%d", &n);
+  int matrizeq[n][n];
+
+  //inserção de valores na matriz
+  for(i = 0; i < n; i++){
+    for(j = 0; j < n; j++){
+      printf("Digite o valor da posição [%d][%d]: ", i, j);
+      scanf("%d", &valor);
+      matrizeq[i][j] = valor;
+    }   
+  }
+
+   ret = somadiagonal(n, matrizeq);
+  if(ret == 1){
+    printf("A soma dos elementos acima e abaixo da diagonal principal são iguais a soma da diagonal principal");
+  } else {
+    printf("A soma dos elementos acima e abaixo da diagonal principal são diferentes da soma da diagonal principal");
+  }
+}

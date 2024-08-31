@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main(void) {
+  char palavra[10];
+  int i, j;
+  for(i = 0; i < 10; i++){
+    printf("Digite uma letra: ");
+    scanf("%c", &palavra[i]);
+  }
+}
+
+int palindromo(char palavra[10]){
+  int i, j;
+  for(i = 0; i < 10; i++){
+    for(j = 10; j > 0; j--){
+      if (palavra[i] == palavra[j]){
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  }
+}

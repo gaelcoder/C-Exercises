@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct
+{
+  int dia, mes;
+} TData;
+
+typedef struct{
+  char nome[50];
+  TData data;
+} TPessoa;
+
+void dadosPessoas(TPessoa pessoas[]){
+  strcpy (pessoas[0].nome, "YGONA MOURA");
+  pessoas[0].data.dia = 3;
+  pessoas[0].data.mes = 7;
+  //2a pessoa
+  strcpy (pessoas[1].nome, "LIVIA CACADORA DE RATOS");
+  pessoas[1].data.dia = 2;
+  pessoas[1].data.mes = 3;
+  //3a pessoa
+  strcpy (pessoas[2].nome, "ANA RATOS E FOFOS");
+  pessoas[2].data.dia = 4;
+  pessoas[2].data.mes = 7;
+  //4a pessoa
+  strcpy (pessoas[3].nome, "AGATHA NUNES");
+  pessoas[3].data.dia = 5;
+  pessoas[3].data.mes = 5;
+  //5a pessoa
+  strcpy (pessoas[4].nome, "ERIKETE DO BOM QUETE");
+  pessoas[4].data.dia = 1;
+  pessoas[4].data.mes = 3;
+}
+
+int aniversariantesDoMes(int mes, TPessoa pessoas[]){
+  int i, cont = 0;
+  for(i = 0; i < 10; i++){
+    if (pessoas[i].data.mes == mes){
+      cont++;
+    }
+  }
+  return cont;
+}
+
+int contarAniversariosEntreDatas (TData data,TData datainicio, TData datalimite){
+  int datadias, iniciodias, limitedias;
+  datadias = data.dia + (data.mes * 30);
+  iniciodias = datainicio.dia + (datainicio.mes * 30);
+  limitedias = datalimite.dia + (datalimite.mes * 30);
+  if (datadias >= iniciodias && datadias <= limitedias){
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+void exibirAniversariantes (TPessoa grupo[], TData inicio, TData limite){
+  int i;
+  for(i = 0; i<6; i++){
+    if (contarAniversariosEntreDatas(grupo[i].data, inicio, limite) == 1){
+      printf("%s %d/%d\n", grupo[i].nome, grupo[i].data.dia, grupo[i].data.mes);
+    }
+  }
+}
+
+
+int main(void) {
+  int mes, anvdomes, tam = 5;
+  TPessoa galera[tam];
+  TData datainicio, datalimite;
+  dadosPessoas(galera);
+  printf("\nInsira o dia de início da verificação: ");
+  scanf("%d", &datainicio.dia);
+  printf("\nInsira o mês de início da verificação: ");
+  scanf("%d", &datainicio.mes);
+  printf("\nInsira o dia limite da verificação: ");
+  scanf("%d", &datalimite.dia);
+  printf("\nInsira o mês limite da verificação: ");
+  scanf("%d", &datalimite.mes);
+  printf("Insira o mês para verificar a quantidade de aniversariantes: ");
+  scanf("%d", &mes);
+  anvdomes = aniversariantesDoMes(mes, galera);
+  printf("\nTemos %d aniversariantes no mês %d\n", anvdomes, mes);
+  exibirAniversariantes(galera, datainicio, datalimite);
+  
+  
+}

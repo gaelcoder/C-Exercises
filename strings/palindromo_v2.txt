@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+void main ()
+{
+  //declaração de variáveis
+  char s[20];
+  int ret;
+
+  //lendo uma string para s
+  printf ("Entre com uma string: ");
+  fflush (stdin);
+  gets (s);
+
+  //chamando a função
+  ret = palindromo (s);
+
+  //testando o retorno e exibindo a mensagem
+  if (ret == 0)
+  {
+    printf ("\nA string %s não é um palíndromo!\n", s);
+  }
+  else
+  {
+    printf ("\nA string %s é um palíndromo!\n", s);
+  }
+}
+
+//implementação das funções
+int palindromo (char s[])
+{
+  //declaração de variáveis
+  int i, j;
+
+  //percorrendo a string
+  for (i=0,j=strlen(s)-1;i<j;i++,j--)
+  {
+    //verificando se os caracteres das posições 'i' e 'j' são distintos
+    if (s[i] != s[j])
+    {
+      return 0;
+    }
+  }
+
+  return 1;
+}

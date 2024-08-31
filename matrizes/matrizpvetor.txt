@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int vetorizador(int x, int y, int matriz[x][y],int vetor[y]){
+  int i, j, k, soma;
+ //somar os valores de cada coluna da matriz e transformar cada resultado em um elemento do vetor
+  for(i = 0; i < y; i++){
+    soma = 0;
+    for(j = 0; j < x; j++){
+      soma += matriz[j][i];
+    }
+    vetor[i] = soma;
+  }
+  printf("O vetor fica: ");
+  for(k = 0; k < y; k++){
+    printf("%d ", vetor[k]);
+  }
+  return 0;
+}
+
+ void preencherMatrizAleatorio(int m, int n, int matriz[m][n]){
+  // declaração de variáveis
+  int i, j;
+
+  srand(time(NULL));
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      matriz[i][j] = rand() % 10;
+    }
+  }
+}
+
+void exibirMatriz(int m, int n, int matriz[m][n]) {
+  // declaração de variáveis
+  int i, j;
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      printf("%3d ", matriz[i][j]);
+    }
+
+    printf("\n");
+  }
+}
+
+int main(void) {
+  
+  int x, y, i, j;
+  //primeiro deve-se declarar o tamanho da matriz para criar a matriz depois com os valores escolhidos.
+  printf("Digite o número de linhas da matriz: ");
+  scanf("%d", &x);
+  printf("Digite o número de coluna da matriz: ");
+  scanf("%d", &y);
+
+  int matriz[x][y];
+  int vetor[y];
+  preencherMatrizAleatorio(x, y, matriz);
+  printf("\nMatriz: \n");
+  exibirMatriz(x, y, matriz);
+  printf("\n");
+  vetorizador(x, y, matriz, vetor);
+  
+}

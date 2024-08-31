@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+void substring(char s[], int p, int n, char sub[]){
+
+  int i, j;
+
+  //validando se os números são válidos na string
+  
+  if ((p<0) || (p >= strlen(s)) || (n<=0)){
+    
+    sub[0] = '\0';
+    
+  } else {
+    
+    for (i=p, j=0;(s[i]) && (j<n); i++, j++){
+      
+      sub[j] = s[i];
+      
+    }
+    
+    sub[j] = '\0';
+    
+  }
+  
+}
+
+int main(void) {
+
+  char s[k];
+  
+}

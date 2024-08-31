@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+void preencherMatrizAleatorio(int m, int n, int matriz[m][n]) {
+  // declaração de variáveis
+  int i, j;
+
+  srand(time(NULL));
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      matriz[i][j] = rand() % 10;
+    }
+  }
+}
+
+void exibirMatriz(int m, int n, int matriz[m][n]) {
+  // declaração de variáveis
+  int i, j;
+
+  // percorrendo as linhas da matriz
+  for (i = 0; i < m; i++) {
+    // percorrendo as colunas da matriz
+    for (j = 0; j < n; j++) {
+      printf("%3d ", matriz[i][j]);
+    }
+
+    printf("\n");
+  }
+}
+
+int trocaMatriz(int x, int y, int matr[5][8]) {
+  int i, j, aux[8];
+
+  //verificando se a troca é possível
+  if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+    return 0;
+  } else {
+      //enviando os valores da 2a coluna na ordem inversa para um vetor auxiliar
+      for (i = 4, j = 0; i >= 0 && j < 5; i--, j++){
+        aux[j] = matr[i][y];
+      }
+    //passando os valores da primeira coluna pra 2a coluna
+      for(i = 0; i < 5; i++){
+       matr[i][y] = matr[i][x];
+     }
+    //passando os valores do vetor auxiliar para a primeira coluna
+        for (i = 0; i < 5; i++) {
+          matr[i][x] = aux[i];
+      }
+    
+      exibirMatriz(5, 8, matr);
+      return 1;
+    }
+}
+
+  int main(void) {
+    int matriz[5][8], col1, col2, troca;
+
+    preencherMatrizAleatorio(5, 8, matriz);
+    exibirMatriz(5, 8, matriz);
+
+    printf("TROCANDO COLUNAS\n");
+    printf("Digite a coluna 1: ");
+    scanf("%d", &col1);
+    printf("Digite a coluna 2: \n");
+    scanf("%d", &col2);
+
+    troca = trocaMatriz(col1, col2, matriz);
+
+    if (troca == 1) {
+      printf("\nOs valores foram trocados com sucesso!\n");
+    } else {
+      printf("Você inseriu colunas inválidas.\n");
+    }
+  }
