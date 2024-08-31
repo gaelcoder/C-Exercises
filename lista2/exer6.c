@@ -4,7 +4,7 @@ int main(void) {
 
   int i, a, b, c;
 
-  printf("Digite um valor (1, 2, 3) para i: ");
+  printf("Digite um valor 1, 2, 3 para i: ");
   scanf("%d", &i);
 
   printf("\nDigite 3 números: \n");
